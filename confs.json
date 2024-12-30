@@ -1,0 +1,345 @@
+acc = {
+    'Boston College',
+    'California',
+    'Clemson',
+    'Duke',
+    'Florida State',
+    'Georgia Tech',
+    'Miami',
+    'NC State',
+    'North Carolina',
+    'Pittsburgh',
+    'SMU',
+    'Stanford',
+    'Syracuse',
+    'Virginia',
+    'Virginia Tech',
+    'Wake Forest',
+    'Louisville',
+
+}
+
+sec = {
+    'Alabama',
+    'Arkansas',
+    'Auburn',
+    'Florida',
+    'Georgia',
+    'Kentucky',
+    'LSU',
+    'Mississippi State',
+    'Missouri',
+    'Oklahoma',
+    'Ole Miss',
+    'South Carolina',
+    'Tennessee',
+    'Texas',
+    'Texas A&M',
+    'Vanderbilt',
+}
+
+big10 = {
+    'Illinois',
+    'Indiana',
+    'Iowa',
+    'Maryland',
+    'Michigan',
+    'Michigan State',
+    'Minnesota',
+    'Nebraska',
+    'Northwestern',
+    'Ohio State',
+    'Oregon',
+    'Penn State',
+    'Purdue',
+    'Rutgers',
+    'UCLA',
+    'USC',
+    'Washington',
+    'Wisconsin',
+}
+
+big12 = {
+    'Arizona',
+    'Arizona State',
+    'BYU',
+    'Baylor',
+    'Cincinnati',
+    'Colorado',
+    'Houston',
+    'Iowa State',
+    'Kansas',
+    'Kansas State',
+    'TCU',
+    'Texas Tech',
+    'UCF',
+    'Utah',
+    'West Virginia',
+    'Oklahoma State',
+
+}
+
+mwc = {
+    'Air Force',
+    'Boise State',
+    'Colorado State',
+    'Fresno State',
+    "Hawai'i",
+    'Wyoming',
+    'UNLV',
+    'Utah State',
+    'San Diego State',
+    'New Mexico',
+    'San José State',
+    'Nevada',
+}
+
+american = {
+    'Army',
+    'UAB',
+    'Florida Atlantic',
+    'East Carolina',
+    'Charlotte',
+    'Memphis',
+    'Navy',
+    'North Texas',
+    'Rice',
+    'Temple',
+    'Tulane',
+    'Tulsa',
+    'South Florida',
+    'UTSA',
+}
+
+cusa = {
+    'Florida International',
+    'Jacksonville State',
+    'Kennesaw State',
+    'Liberty',
+    'Louisiana Tech',
+    'Middle Tennessee',
+    'New Mexico State',
+    'Sam Houston',
+    'Western Kentucky',
+    'UTEP'
+}
+
+mac = {
+    'Akron',
+    'Ball State',
+    'Bowling Green',
+    'Buffalo',
+    'Central Michigan',
+    'Eastern Michigan',
+    'Kent State',
+    'Miami (OH)',
+    'Northern Illinois',
+    'Ohio',
+    'Toledo',
+    'Western Michigan',
+
+}
+
+sun_belt = {
+    'App State',
+    'Coastal Carolina',
+    'Georgia Southern',
+    'Georgia State',
+    'James Madison',
+    'Marshall',
+    'Old Dominion',
+    'Arkansas State',
+    'UL Monroe',
+    'Lafayette',
+    'Southern Miss',
+    'South Alabama',
+    'Texas State',
+    'Troy',
+    'Louisiana',
+}
+
+other_fbs = {
+    'Notre Dame',
+    'Oregon State',
+    'Washington State',
+    'UConn',
+    'Massachusetts',
+}
+
+
+
+
+
+
+
+
+sky = {
+    'Eastern Washington',
+    'Idaho',
+    'Idaho State',
+    'Montana',
+    'Montana State',
+    'Northern Arizona',
+    'Northern Colorado',
+    'Portland State',
+    'Sacramento State',
+    'Weber State',
+    'UC Davis',
+    'Cal Poly',
+}
+
+mvfc = {
+    'Illinois State',
+    'Indiana State',
+    'Missouri State',
+    'Murray State',
+    'North Dakota',
+    'North Dakota State',
+    'Northern Iowa',
+    'South Dakota',
+    'South Dakota State',
+    'Southern Illinois',
+    'Youngstown State'
+}
+
+swac = {
+    'Alabama A&M',
+    'Alabama State',
+    'Bethune-Cookman',
+    'Florida A&M',
+    'Jackson State',
+    'Mississippi Valley State',
+    'Alcorn State',
+    'Arkansas-Pine Bluff',
+    'Grambling',
+    'Prairie View A&M',
+    'Southern',
+    'Texas Southern',
+}
+
+meac = {
+    'Delaware State',
+    'Howard',
+    'Morgan State',
+    'Norfolk State',
+    'North Carolina Central',
+    'South Carolina State',
+
+}
+
+ivy = {
+    'Brown',
+    'Columbia',
+    'Cornell',
+    'Dartmouth',
+    'Pennsylvania',
+    'Yale',
+    'Harvard',
+    'Princeton',
+}
+
+big_south = {
+    'Charleston Southern',
+    'Gardner-Webb',
+    'Southeast Missouri State',
+    'Tennessee Tech',
+    'UT Martin',
+    'Tennessee State',
+    'Lindenwood',
+    'Western Illinois',
+    'Eastern Illinois',
+}
+
+coastal = {
+    'Campbell',
+    'Delaware',
+    'Elon',
+    'Hampton',
+    'Monmouth',
+    'North Carolina A&T',
+    'Stony Brook',
+    'Towson',
+    'William & Mary',
+    'Rhode Island',
+    'Richmond',
+    'Villanova',
+    'New Hampshire',
+    'Maine',
+    'UAlbany',
+    'Bryant',
+}
+
+northeast = {
+    'Central Connecticut',
+    'Duquesne',
+    'Long Island University',
+    'Robert Morris',
+    'St. Francis (PA)',
+    'Stonehill',
+    'Mercyhurst',
+    'Wagner',
+}
+
+patriot = {
+    'Lehigh',
+    'Holy Cross',
+    'Bucknell',
+    'Fordham',
+    'Colgate',
+    'Georgetown',
+    'Lafayette'
+}
+
+pioneer = {
+    'Drake',
+    'Davidson',
+    'Dayton',
+    'Butler',
+    'San Diego',
+    'Morehead State',
+    'St. Thomas-Minnesota',
+    'Valparaiso',
+    'Presbyterian',
+    'Stetson',
+    'Marist',
+}
+
+southern = {
+    'Mercer',
+    'Western Carolina',
+    'Chattanooga',
+    'East Tennessee State',
+    'Samford',
+    'The Citadel',
+    'Wofford',
+    'VMI',
+    'Furman',
+}
+
+southland = {
+    'Nicholls',
+    'Northwestern State',
+    'McNeese',
+    'East Texas A&M',
+    'Lamar',
+    'Houston Christian',
+    'Stephen F. Austin',
+    'SE Louisiana',
+    'Incarnate Word',
+}
+
+united = {
+    'Abilene Christian',
+    'Eastern Kentucky',
+    'Southern Utah',
+    'Tarleton State',
+    'Austin Peay',
+    'Central Arkansas',
+    'North Alabama',
+    'Utah Tech',
+    'West Georgia',
+}
+
+other_fcs = {
+    'Merrimack',
+}
