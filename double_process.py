@@ -6,7 +6,7 @@ import os
 from conference_mappings import conf_levels, conf_mapping
 
 class elo_score:
-    def __init__(self, id, starting_mu=1500, starting_sigma=100, score_factor=25, home_advantage = 3):
+    def __init__(self, id, starting_mu=1500, starting_sigma=250, score_factor=25, home_advantage = 3):
         self.id = id
         self.mu = starting_mu
         self.sigma = starting_sigma
@@ -104,22 +104,85 @@ df['grouping_date'] = df.Day.dt.isocalendar().week
 #df['grouping_date'] = df.Day.dt.year
 
 df['Result'] = (np.sign(df.Score - df.Opp_Score) + 1) / 2
-df['conf'] = df.Team.map(conf_mapping).fillna('None')
+df['conf'] = df.Team.map(conf_mapping).fillna('D2')
 df['division'] = df.conf.map(conf_levels).fillna('None')
+df['opp_conf'] = df.Opp.map(conf_mapping).fillna('D2')
+df['opp_division'] = df.opp_conf.map(conf_levels).fillna('None')
+
 fbs_teams = set(df[df.division == "FBS"].Team)
 fcs_teams = set(df[df.division == "FCS"].Team)
 d2_teams = set(df[df.division == "None"].Team)
 
 ## Need to limit the input dataset HERE if we want to not consider games
 df = df[df.Day <= '2024-12-14']
+ooc_games = df[df.conf != df.opp_conf]
 
-## First pass though
+
+## Conference pass though
+confbase = dict()
+c = 15
+all_confs = set(df.conf)
+opponent_lists = list()
+
+grouping_dates = list(set(ooc_games.grouping_date))
+for confname in all_confs:
+    confbase[confname] = elo_score(confname, starting_mu=1500, starting_sigma=250)
+
+for group in grouping_dates:
+    match_group = ooc_games[ooc_games.grouping_date == group]
+    active_confs = set(match_group.conf)
+    opponent_lists = list()
+    for confname in active_confs:
+        conf_subset = match_group[match_group.conf == confname]
+        opponent_list = list()
+        for _, row in conf_subset.iterrows():
+            opponent_list.append(
+                (row['opp_conf'], confbase[row['opp_conf']].mu, confbase[row['opp_conf']].sigma, row['Score'], row['Opp_Score'],
+                row['Score'] - row['Opp_Score'], row['Result'], row['Home'], row['Date'])
+                )
+        opponent_lists.append(opponent_list)        
+
+    for resting_club in set(confbase.keys()).difference(active_confs):
+        #print(first_of_month, resting_club)
+        confbase[resting_club].rest_period(group, c)
+        
+    # Process each club
+    for clubname, opponent_list in list(zip(active_confs, opponent_lists)):
+        confbase[clubname].update(opponent_list, group)
+    
+'''
+for confname in all_confs:
+    confbase[confname] = elo_score(confname)
+for confname in all_confs:
+    conf_subset = df[df.conf == confname]
+    opponent_list = list()
+    for _, row in conf_subset.iterrows():
+        opponent_list.append(
+            (row['opp_conf'], confbase[row['opp_conf']].mu, confbase[row['opp_conf']].sigma, row['Score'], row['Opp_Score'],
+            row['Score'] - row['Opp_Score'], row['Result'], row['Home'], row['Date'])
+            )
+    opponent_lists.append(opponent_list)        
+for clubname, opponent_list in list(zip(all_confs, opponent_lists)):
+    confbase[clubname].update_naive(opponent_list)
+'''
+conf_histories = pd.concat([x.return_history() for x in confbase.values()])
+conf_scores = conf_histories[conf_histories.Date == 50]
+
+
+## First Team pass though
 teambase = dict()
 c = 15
 all_teams = set(df.Team)
 opponent_lists = list()
-#for teamname in all_teams:
-#    teambase[teamname] = elo_score(teamname)
+
+for conf in set(conf_scores.Team):
+    conf_subset = df[df.conf == conf]
+    conf_teams = set(conf_subset.Team)
+    conf_mu = conf_scores[conf_scores.Team == conf].mu.iloc[0]
+    conf_sigma = conf_scores[conf_scores.Team == conf].sigma.iloc[0]
+    for teamname in conf_teams:
+        teambase[teamname] = elo_score(teamname, conf_mu, (2*conf_sigma))
+'''
 for teamname in fbs_teams:
     teambase[teamname] = elo_score(teamname, 1500)
 for teamname in fcs_teams:
@@ -128,6 +191,7 @@ for teamname in d2_teams:
     teambase[teamname] = elo_score(teamname, 1000)
     ## Can we get the average MOV across FBS v FCS throughout the year? Downshift FCS starting values by that much
     ## Maybe more fair to do it by division?
+'''
 for teamname in all_teams:
     team_subset = df[df.Team == teamname]
     opponent_list = list()
