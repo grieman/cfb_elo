@@ -169,7 +169,7 @@ conf_histories = pd.concat([x.return_history() for x in confbase.values()])
 conf_scores = conf_histories[conf_histories.Date == 50]
 
 
-## First Team pass though
+## Naive Team pass though
 teambase = dict()
 c = 15
 all_teams = set(df.Team)
