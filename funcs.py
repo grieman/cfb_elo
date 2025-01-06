@@ -4,7 +4,49 @@ import math
 import glob
 import os
 from conference_mappings import conf_levels, conf_mapping
+from sklearn.metrics import mean_squared_error
 
+
+def brier_simple(y, y_preds):
+    return (np.subtract(y, y_preds)**2).mean()
+
+def brier_score(y, y_preds):
+    '''
+    uncertainty: Max of .5*(1-.5) = 0.25
+    resolution: max of uncertainty, bigger is better
+    reliability: low number wanted.
+    '''
+    uncertainty = y.mean() * (1-y.mean())
+    #groups = pd.qcut(y_preds, 50, labels=False)
+    values = y_preds.unique()
+    reliabilities = list() # closeness of the forecast to true, given forecast (also calibration)
+    resolutions = list() # how much the conditional probabilities, given forecasts, differ from overall average
+    sub_means = list()
+    for value in values:
+        sub_preds = y_preds[y_preds == value]
+        sub_means.append(sub_preds.mean())
+        sub_ys = y[y_preds == value]
+        reliabilities.append((np.subtract(sub_preds, sub_ys)**2).mean())
+        resolutions.append((np.subtract(sub_ys, y.mean())**2).mean())
+    
+    reliability = np.mean(reliabilities)
+    resolution = np.mean(resolutions)
+
+    score = reliability - resolution + uncertainty
+    # old retunables: sub_means, reliabilities, resolutions
+
+    return score, reliability, resolution, uncertainty
+
+def overall_accuracy(match_df, n_brier, n_rmse, cutoff_year, cutoff_month):
+    match_df = match_df[(match_df.year >= cutoff_year) & (match_df.month >= cutoff_month)]
+
+    brier, _, _, _ = brier_score(match_df.result, match_df.adv_prediction)
+    rmse = math.sqrt(mean_squared_error(match_df.point_diff, match_df.adv_spread))
+
+    brier_skill = 1 - (brier / n_brier)
+    rmse_skill = 1 - (rmse / n_rmse)
+
+    return brier_skill, rmse_skill
 
 class elo_score:
     def __init__(self, id, starting_mu=1500, starting_sigma=250, score_factor=25, home_advantage = 3):
@@ -275,11 +317,39 @@ def grouped_team_run(df, teambase):
 
 
 
-
-def model_for_week(df):
-    conf_scores = prerate_confs_weekly(df)
-    naive_scores = prepare_confs_all(df)
-    teambase, rough_histories = naive_team_run(df, conf_scores)
+def model_for_week(df, all_confs, all_data):
+    conf_scores = prerate_confs_weekly(df, all_confs)
+    #naive_scores = prepare_confs_all(df)
+    teambase, rough_histories = naive_team_run(df, conf_scores, all_data)
     teambase, last_week = grouped_team_run(df, teambase)
+    return teambase
 
+def eval_weekly(teambase, df, nextweek):
+
+    score_factor = teambase[nextweek.Team.iloc[0]].score_factor
+    nextweek['score_diff'] = nextweek.Score - nextweek.Opp_Score
+    nextweek['outcome_expectation'] = 1 / (1 + 10 ** ((nextweek.score_diff * score_factor) / -score_factor**2))
+    def predict_from_row(row):
+        expectation, spread, expectations, sim_elo_spreads, self_sims, opp_sims = teambase[row['Team']].predict(teambase[row['Opp']], row['Home'])
+        return expectation, spread
+    nextweek['expectation'], nextweek['spread'] = zip(*nextweek.apply(predict_from_row, axis=1))
+    nextweek['pred_sd'] = nextweek.apply(lambda x: np.sqrt((teambase[x['Team']].sigma ** 2) + (teambase[x['Opp']].sigma ** 2)) / score_factor, axis = 1)
+    nextweek['outcome_z'] = (nextweek.score_diff - nextweek.spread) / nextweek.pred_sd
+
+    ## Calc brier, average point error, average z_score?
+    eval_set = nextweek[nextweek.Home == 1].copy()
+    eval_subset = df[df.Home == 1].copy()
+    eval_subset['score_diff'] = eval_subset.Score - eval_subset.Opp_Score
+    eval_set['naive_scorediff'] = eval_subset.score_diff.mean()
+
+    n_brier = brier_simple(eval_set.Result, eval_subset.Result.mean())
+    brier = brier_simple(eval_set.Result, eval_set.expectation)
+    brier_skill = 1 - (brier/n_brier)
+    avg_z = eval_set.outcome_z.mean()
+    avg_abs_z = abs(eval_set.outcome_z.mean())
+    n_rmse = mean_squared_error(eval_set.score_diff, eval_set.naive_scorediff, squared=False)
+    rmse = mean_squared_error(eval_set.score_diff, eval_set.spread, squared=False)
+    rmse_skill = 1 - (rmse/n_rmse)
+
+    return brier, brier_skill, rmse, rmse_skill, avg_z, avg_abs_z, nextweek
 
