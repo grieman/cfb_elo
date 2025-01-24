@@ -4,6 +4,8 @@ import math
 import glob
 import os
 from conference_mappings import conf_levels, conf_mapping
+import gzip
+import pickle
 
 class elo_score:
     def __init__(self, id, starting_mu=1500, starting_sigma=250, score_factor=25, home_advantage = 3):
@@ -261,7 +263,10 @@ for group in grouping_dates:
     # Process each club
     for clubname, opponent_list in list(zip(active_teams, opponent_lists)):
         teambase[clubname].update(opponent_list, group)
-    
+
+with gzip.open('teambase.gz', 'wb') as compressed_file:
+    pickle.dump(teambase, compressed_file)
+
 club_histories = pd.concat([x.return_history() for x in teambase.values()])
 #club_histories[club_histories.Date == 12].sort_values('mu', ascending=False).head(10)
 
@@ -276,3 +281,15 @@ last_week.head(25)
 
 
 ## Now need to make a harness and judge our accuracy, then param sweep
+
+def make_sim(row):
+    return np.random.normal(row['mu'], row['sigma'], size=10)
+
+ratings_tbl['sims'] = ratings_tbl.apply(make_sim, axis=1)
+
+nd = teambase["Notre Dame"]
+osu = teambase['Ohio State']
+nd_sims = np.random.normal(nd.mu, nd.sigma, size = 10000)
+osu_sims = np.random.normal(osu.mu, osu.sigma, size = 10000)
+elo_diffs = nd_sims - osu_sims
+spreads = elo_diffs / 25
