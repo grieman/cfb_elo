@@ -84,7 +84,7 @@ class elo_score:
         output['Team'] = self.id
         return output
 
-df = pd.read_csv("season.csv").drop_duplicates()
+df = pd.read_csv("season_2025.csv").drop_duplicates()
 away_matches = df.copy()
 away_matches.columns = ['Team','Opp','Score',"Opp_Score","Date"]
 home_matches = df.copy()
@@ -116,7 +116,7 @@ fcs_teams = set(df[df.division == "FCS"].Team)
 d2_teams = set(df[df.division == "None"].Team)
 
 ## Need to limit the input dataset HERE if we want to not consider games
-df = df[df.Day <= '2024-12-14']
+#df = df[df.Day <= '2024-12-14']
 ooc_games = df[df.conf != df.opp_conf]
 
 
@@ -168,8 +168,9 @@ for clubname, opponent_list in list(zip(all_confs, opponent_lists)):
     confbase[clubname].update_naive(opponent_list)
 '''
 conf_histories = pd.concat([x.return_history() for x in confbase.values()])
-conf_scores = conf_histories[conf_histories.Date == 50]
-
+max_date = conf_histories.Date.iloc[-1]
+conf_scores = conf_histories[conf_histories.Date == max_date]
+conf_scores.sort_values('mu', ascending=False)[['Team', 'mu', 'sigma']]
 
 ## Naive Team pass though
 teambase = dict()
@@ -207,7 +208,7 @@ for clubname, opponent_list in list(zip(all_teams, opponent_lists)):
     teambase[clubname].update_naive(opponent_list)
 rough_histories = pd.concat([x.return_history() for x in teambase.values()])
 rough_histories = rough_histories[rough_histories.Date == "NAIVE"]
-
+rough_histories.sort_values('mu', ascending=False)[['Team', 'mu', 'sigma']].head(25)
 
 
 '''
@@ -271,13 +272,30 @@ club_histories = pd.concat([x.return_history() for x in teambase.values()])
 #club_histories[club_histories.Date == 12].sort_values('mu', ascending=False).head(10)
 
 #club_histories[club_histories.Opponent.isnull()].sort_values('mu', ascending=False).head(10)
-
-last_week = club_histories[club_histories.Date == 50]
+max_date = club_histories.Date.iloc[-1]
+last_week = club_histories[club_histories.Date == max_date]
 
 last_week['rating'] = last_week.mu - (last_week.sigma * 2)
 last_week = last_week[['Team','rating','mu','sigma']]
 last_week = last_week.sort_values('rating', ascending=False).reset_index(drop=True)
 last_week.head(25)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 ## Now need to make a harness and judge our accuracy, then param sweep

@@ -24,12 +24,22 @@ chrome_options.add_experimental_option(
 )
 driver = webdriver.Chrome(service=Service("C:/bin/chromedriver.exe"), options=chrome_options)
 
+'''
 fbs_season = [f"https://www.espn.com/college-football/scoreboard/_/week/{x}/year/2024/seasontype/2/group/80" for x in range(1,17)]
 fcs_season = [f"https://www.espn.com/college-football/scoreboard/_/week/{x}/year/2024/seasontype/2/group/81" for x in range(1,17)]
 postseason = ["https://www.espn.com/college-football/scoreboard/_/week/1/year/2024/seasontype/3/group/80",
               "https://www.espn.com/college-football/scoreboard/_/week/999/year/2024/seasontype/3/group/80",
               "https://www.espn.com/college-football/scoreboard/_/week/1/year/2024/seasontype/3/group/81"]
 url_list = fbs_season + fcs_season# + postseason
+'''
+fbs_season = [f"https://www.espn.com/college-football/scoreboard/_/week/{x}/year/2025/seasontype/2/group/80" for x in range(1,9)]
+fcs_season = [f"https://www.espn.com/college-football/scoreboard/_/week/{x}/year/2025/seasontype/2/group/81" for x in range(1,9)]
+postseason = ["https://www.espn.com/college-football/scoreboard/_/week/1/year/2025/seasontype/3/group/80",
+              "https://www.espn.com/college-football/scoreboard/_/week/999/year/2025/seasontype/3/group/80",
+              "https://www.espn.com/college-football/scoreboard/_/week/1/year/2025/seasontype/3/group/81"]
+url_list = fbs_season + fcs_season# + postseason
+
+
 
 def summary_from_tbl(game):
     teams = [x.text for x in game.find_all('div', {'class': 'ScoreCell__TeamName ScoreCell__TeamName--shortDisplayName db'})]
@@ -53,4 +63,6 @@ for url in url_list:
         all_results.append(day_results)
 
 all_games = pd.concat(all_results)
-all_games.to_csv('season.csv', index=False)
+all_games.to_csv('season_2025.csv', index=False)
+
+driver.quit()
