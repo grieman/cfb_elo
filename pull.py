@@ -32,8 +32,8 @@ postseason = ["https://www.espn.com/college-football/scoreboard/_/week/1/year/20
               "https://www.espn.com/college-football/scoreboard/_/week/1/year/2024/seasontype/3/group/81"]
 url_list = fbs_season + fcs_season# + postseason
 '''
-fbs_season = [f"https://www.espn.com/college-football/scoreboard/_/week/{x}/year/2025/seasontype/2/group/80" for x in range(1,9)]
-fcs_season = [f"https://www.espn.com/college-football/scoreboard/_/week/{x}/year/2025/seasontype/2/group/81" for x in range(1,9)]
+fbs_season = [f"https://www.espn.com/college-football/scoreboard/_/week/{x}/year/2025/seasontype/2/group/80" for x in range(1,17)]
+fcs_season = [f"https://www.espn.com/college-football/scoreboard/_/week/{x}/year/2025/seasontype/2/group/81" for x in range(1,17)]
 postseason = ["https://www.espn.com/college-football/scoreboard/_/week/1/year/2025/seasontype/3/group/80",
               "https://www.espn.com/college-football/scoreboard/_/week/999/year/2025/seasontype/3/group/80",
               "https://www.espn.com/college-football/scoreboard/_/week/1/year/2025/seasontype/3/group/81"]
@@ -49,18 +49,22 @@ def summary_from_tbl(game):
 all_results = []
 
 for url in url_list:
-    driver.get(url)
-    week_response = driver.page_source
-    week_soup = BeautifulSoup(week_response, "html.parser")
-    days = week_soup.find_all('section', {'class': "Card gameModules"})
-    for day in days:
+    try:
+        driver.get(url)
+        week_response = driver.page_source
+        week_soup = BeautifulSoup(week_response, "html.parser")
+        days = week_soup.find_all('section', {'class': "Card gameModules"})
+        for day in days:
 
-        games = day.find_all('ul',{'class':"ScoreboardScoreCell__Competitors"})
-        day_results = pd.DataFrame([summary_from_tbl(x) for x in games], columns = ['Away','Home','Away_Score','Home Score'])
+            games = day.find_all('ul',{'class':"ScoreboardScoreCell__Competitors"})
+            day_results = pd.DataFrame([summary_from_tbl(x) for x in games], columns = ['Away','Home','Away_Score','Home Score'])
 
-        date = day.find("h3", {"class":"Card__Header__Title Card__Header__Title--no-theme"}).text
-        day_results['Date'] = pd.to_datetime(date).strftime("%Y-%m-%d")
-        all_results.append(day_results)
+            date = day.find("h3", {"class":"Card__Header__Title Card__Header__Title--no-theme"}).text
+            day_results['Date'] = pd.to_datetime(date).strftime("%Y-%m-%d")
+            all_results.append(day_results)
+
+    except:
+        pass
 
 all_games = pd.concat(all_results)
 all_games.to_csv('season_2025.csv', index=False)

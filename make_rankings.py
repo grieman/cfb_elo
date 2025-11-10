@@ -228,3 +228,8 @@ def top25_table(ranks):
 
 def current_ranks(ranks):
     return ranks[(ranks.Week == max(ranks.Week))]
+
+if __name__ == '__main__':
+    ranks = historical_rankings()
+    print(top25_table(ranks))
+    #print(current_ranks(ranks))
