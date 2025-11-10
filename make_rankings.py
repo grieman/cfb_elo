@@ -211,13 +211,16 @@ def historical_rankings(file = 'season_2025.csv'):
 import seaborn as sns
 import matplotlib.pyplot as plt
 
-def plot_top_n(ranks, n):
+def plot_top_n(ranks, n, save = False):
 
     recent_top_n = ranks[(ranks.Week == max(ranks.Week)) & (ranks.Rank <= n)].copy()
     recent_histories = ranks[ranks.Team.isin(recent_top_n.Team)].copy()
 
     sns.lineplot(data=recent_histories, x="Week", y="rating", hue='Team')
-    plt.show()
+    if save:
+        plt.savefig(f'outputs/top_{n}.png')
+    else:
+        plt.show()
 
 
 def top25_table(ranks):
@@ -231,5 +234,11 @@ def current_ranks(ranks):
 
 if __name__ == '__main__':
     ranks = historical_rankings()
-    print(top25_table(ranks))
+    top_25 = top25_table(ranks)
+    top_25.to_csv('outputs/top_25.csv')
+    print(top_25)
+
+    plot_top_n(ranks, 5, save = True)
+    plot_top_n(ranks, 10, save = True)
+    plot_top_n(ranks, 25, save = True)
     #print(current_ranks(ranks))
