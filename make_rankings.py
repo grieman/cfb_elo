@@ -205,36 +205,52 @@ def historical_rankings(file = 'season_2025.csv'):
     
     ranks = pd.concat(all_rankings)
 
+    ranks['scaled_rating'] = ranks.groupby("Week").rating.transform(lambda x: (x - x.min() + 1) / (x.max() - x.min() + 1)).round(4)
+
     return ranks
 
 
 import seaborn as sns
 import matplotlib.pyplot as plt
 
-def plot_top_n(ranks, n, save = False):
+def plot_top_n(ranks, n, save = False, scaled = True):
 
     recent_top_n = ranks[(ranks.Week == max(ranks.Week)) & (ranks.Rank <= n)].copy()
     recent_histories = ranks[ranks.Team.isin(recent_top_n.Team)].copy()
 
-    sns.lineplot(data=recent_histories, x="Week", y="rating", hue='Team')
+    if scaled == True:
+        sns.lineplot(data=recent_histories, x="Week", y="scaled_rating", hue='Team')
+    else:
+        sns.lineplot(data=recent_histories, x="Week", y="rating", hue='Team')
     if save:
         plt.savefig(f'outputs/top_{n}.png')
     else:
         plt.show()
 
 
-def top25_table(ranks):
-    top25s = ranks[(ranks.Rank <= 25) * (ranks.Week > 0)].copy()
-    top25s = top25s.pivot(index = 'Rank', columns = 'Week', values = 'Team')
+def top25_table(ranks, scaled = True):
+    top25s = ranks[(ranks.Rank <= 25) & (ranks.Week > 0)].copy()
+    top25_names = top25s.pivot(index = 'Rank', columns = 'Week', values = 'Team')
+    if scaled == True:
+        top25_ratings = top25s.pivot(index = 'Rank', columns = 'Week', values = 'scaled_rating')
+        for col in top25_ratings.columns:
+            top25_ratings[col] = top25_ratings[col].apply(lambda x: f" ({x:.3f})")
+    else:
+        top25_ratings = top25s.pivot(index = 'Rank', columns = 'Week', values = 'rating')
+        for col in top25_ratings.columns:
+            top25_ratings[col] = top25_ratings[col].apply(lambda x: f" ({x:.1f})")
 
-    return top25s
+    top25s_out = top25_names + top25_ratings
+    top25s_out.columns = ['Team'] + [f'Week {x}' for x in top25s_out.columns[1:]]
+
+    return top25s_out
 
 def current_ranks(ranks):
     return ranks[(ranks.Week == max(ranks.Week))]
 
 if __name__ == '__main__':
     ranks = historical_rankings()
-    top_25 = top25_table(ranks)
+    top_25 = top25_table(ranks, scaled=False)
     top_25.to_csv('outputs/top_25.csv')
     print(top_25)
 

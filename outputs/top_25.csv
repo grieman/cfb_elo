@@ -1,26 +1,26 @@
-Rank,1,2,3,4,5,6,7,8,9,10,11
-1,Auburn,Utah,Vanderbilt,Vanderbilt,Vanderbilt,Texas Tech,Texas Tech,Ohio State,Ohio State,Indiana,Texas Tech
-2,Utah,Oregon,Oklahoma,Oklahoma,Oregon,Ohio State,Ohio State,Texas Tech,Indiana,Texas Tech,Ohio State
-3,Tennessee,Auburn,Utah,Ole Miss,Indiana,Oregon,Indiana,Indiana,Texas Tech,Ohio State,Indiana
-4,Ole Miss,Illinois,Oregon,Texas Tech,Texas Tech,Indiana,Notre Dame,Alabama,Utah,Utah,Texas A&M
-5,Georgia,Vanderbilt,Ole Miss,Oregon,Oklahoma,Oklahoma,Utah,Notre Dame,Texas A&M,Texas A&M,Utah
-6,Oklahoma,Ole Miss,Georgia,Indiana,Ole Miss,Alabama,Alabama,Oregon,Alabama,Notre Dame,Notre Dame
-7,LSU,Missouri,Missouri,Missouri,Ohio State,Vanderbilt,Texas A&M,Utah,Notre Dame,Alabama,Georgia
-8,Texas A&M,Oklahoma,USC,USC,Notre Dame,Notre Dame,Georgia,Georgia,Oregon,Oregon,Alabama
-9,South Carolina,USC,Auburn,Georgia,Missouri,Texas A&M,USC,Texas A&M,BYU,BYU,Oregon
-10,Missouri,Tennessee,Illinois,BYU,Tennessee,Ole Miss,Vanderbilt,Oklahoma,Georgia,Georgia,BYU
-11,Vanderbilt,Georgia,Houston,Tennessee,BYU,Miami,BYU,Vanderbilt,Vanderbilt,Vanderbilt,USC
-12,Florida State,Penn State,LSU,Auburn,Utah,Missouri,Miami,BYU,Miami,Oklahoma,Vanderbilt
-13,Maryland,Ohio State,Arkansas,Houston,USC,Tennessee,Oregon,Missouri,Ole Miss,Ole Miss,Ole Miss
-14,Florida,TCU,Tennessee,TCU,Alabama,Utah,LSU,USC,USC,USC,Oklahoma
-15,Mississippi State,Arkansas,TCU,LSU,Miami,Georgia,Iowa,Miami,Iowa,Iowa,Miami
-16,Arkansas,Nebraska,Ohio State,Miami,Texas A&M,BYU,Tennessee,LSU,Oklahoma,Miami,Iowa
-17,Ohio State,Texas A&M,Penn State,Kansas,Auburn,USC,Missouri,Georgia Tech,Missouri,Missouri,Texas
-18,USC,Houston,Indiana,Mississippi State,TCU,TCU,Virginia,Ole Miss,Tennessee,Texas,Pittsburgh
-19,Penn State,Washington,Alabama,Washington,LSU,Virginia,Oklahoma,Michigan,Georgia Tech,Pittsburgh,SMU
-20,Iowa State,Indiana,Nebraska,Texas A&M,Georgia,Illinois,Ole Miss,Cincinnati,Cincinnati,Louisville,Tennessee
-21,Arizona,Arizona,Mississippi State,Florida State,Virginia,LSU,Washington,Texas,Texas,Washington,South Florida
-22,Oregon,Iowa State,BYU,Alabama,Iowa State,Auburn,Memphis,Iowa,Michigan,Tennessee,Missouri
-23,Tulane,Purdue,Texas A&M,Michigan,Arizona State,Duke,Duke,South Florida,Washington,Michigan,Michigan
-24,Illinois,BYU,Arizona,Ohio State,Michigan,Memphis,Texas,Tennessee,Pittsburgh,Cincinnati,Cincinnati
-25,Kansas,LSU,Michigan,Utah,Maryland,Michigan,Georgia Tech,Louisville,South Florida,SMU,Georgia Tech
+Rank,Team,Week 2,Week 3,Week 4,Week 5,Week 6,Week 7,Week 8,Week 9,Week 10,Week 11
+1,Auburn (1635.4),Utah (1773.9),Vanderbilt (1922.9),Vanderbilt (1944.5),Vanderbilt (1934.2),Texas Tech (1960.6),Texas Tech (2027.0),Ohio State (2015.3),Ohio State (2018.7),Indiana (2063.3),Texas Tech (2102.1)
+2,Utah (1635.3),Oregon (1765.1),Oklahoma (1848.4),Oklahoma (1865.4),Oregon (1872.4),Ohio State (1890.5),Ohio State (1977.8),Texas Tech (1964.8),Indiana (1993.9),Texas Tech (2056.8),Ohio State (2071.4)
+3,Tennessee (1624.8),Auburn (1748.3),Utah (1840.3),Ole Miss (1861.2),Indiana (1856.4),Oregon (1878.5),Indiana (1938.1),Indiana (1948.5),Texas Tech (1990.4),Ohio State (2047.7),Indiana (2030.1)
+4,Ole Miss (1606.1),Illinois (1747.8),Oregon (1837.6),Texas Tech (1848.8),Texas Tech (1853.3),Indiana (1866.9),Notre Dame (1892.9),Alabama (1905.5),Utah (1930.2),Utah (1990.7),Texas A&M (1995.4)
+5,Georgia (1589.7),Vanderbilt (1742.0),Ole Miss (1816.9),Oregon (1835.2),Oklahoma (1847.3),Oklahoma (1866.8),Utah (1882.8),Notre Dame (1901.0),Texas A&M (1926.6),Texas A&M (1927.4),Utah (1990.0)
+6,Oklahoma (1587.8),Ole Miss (1738.8),Georgia (1799.6),Indiana (1825.3),Ole Miss (1828.1),Alabama (1853.1),Alabama (1869.8),Oregon (1893.7),Alabama (1909.3),Notre Dame (1911.6),Notre Dame (1941.9)
+7,LSU (1580.1),Missouri (1722.1),Missouri (1790.5),Missouri (1814.6),Ohio State (1818.0),Vanderbilt (1849.5),Texas A&M (1855.6),Utah (1875.7),Notre Dame (1906.4),Alabama (1906.3),Georgia (1917.3)
+8,Texas A&M (1578.2),Oklahoma (1718.9),USC (1788.7),USC (1800.9),Notre Dame (1812.1),Notre Dame (1844.0),Georgia (1850.2),Georgia (1860.1),Oregon (1888.7),Oregon (1889.1),Alabama (1916.6)
+9,South Carolina (1578.1),USC (1701.7),Auburn (1770.2),Georgia (1799.8),Missouri (1802.9),Texas A&M (1831.2),USC (1840.4),Texas A&M (1845.5),BYU (1886.2),BYU (1888.0),Oregon (1902.2)
+10,Missouri (1576.5),Tennessee (1697.0),Illinois (1761.7),BYU (1796.1),Tennessee (1801.4),Ole Miss (1828.8),Vanderbilt (1831.8),Oklahoma (1844.1),Georgia (1864.6),Georgia (1858.8),BYU (1858.5)
+11,Vanderbilt (1569.1),Georgia (1694.0),Houston (1734.1),Tennessee (1769.0),BYU (1794.7),Miami (1811.5),BYU (1822.6),Vanderbilt (1837.3),Vanderbilt (1851.6),Vanderbilt (1843.1),USC (1847.3)
+12,Florida State (1552.0),Penn State (1693.0),LSU (1725.3),Auburn (1767.3),Utah (1793.6),Missouri (1805.6),Miami (1817.4),BYU (1833.9),Miami (1809.4),Oklahoma (1829.7),Vanderbilt (1846.3)
+13,Maryland (1550.6),Ohio State (1685.2),Arkansas (1723.5),Houston (1760.3),USC (1787.1),Tennessee (1799.5),Oregon (1814.4),Missouri (1805.7),Ole Miss (1803.9),Ole Miss (1826.3),Ole Miss (1839.1)
+14,Florida (1542.4),TCU (1684.0),Tennessee (1721.0),TCU (1752.4),Alabama (1757.0),Utah (1797.1),LSU (1773.2),USC (1803.0),USC (1799.6),USC (1819.4),Oklahoma (1833.1)
+15,Mississippi State (1541.1),Arkansas (1683.1),TCU (1720.1),LSU (1742.3),Miami (1755.7),Georgia (1796.4),Iowa (1771.3),Miami (1765.1),Iowa (1799.3),Iowa (1793.8),Miami (1819.8)
+16,Arkansas (1521.3),Nebraska (1661.9),Ohio State (1717.0),Miami (1738.2),Texas A&M (1754.9),BYU (1794.7),Tennessee (1770.4),LSU (1759.2),Oklahoma (1794.2),Miami (1793.4),Iowa (1795.6)
+17,Ohio State (1518.2),Texas A&M (1651.6),Penn State (1714.4),Kansas (1736.0),Auburn (1745.7),USC (1793.8),Missouri (1766.9),Georgia Tech (1754.5),Missouri (1793.6),Missouri (1790.8),Texas (1794.2)
+18,USC (1512.9),Houston (1648.2),Indiana (1705.1),Mississippi State (1718.1),TCU (1745.0),TCU (1770.7),Virginia (1766.8),Ole Miss (1747.8),Tennessee (1782.7),Texas (1790.2),Pittsburgh (1773.5)
+19,Penn State (1498.6),Washington (1641.5),Alabama (1696.0),Washington (1714.7),LSU (1743.6),Virginia (1767.9),Oklahoma (1766.2),Michigan (1743.5),Georgia Tech (1782.3),Pittsburgh (1776.5),SMU (1766.9)
+20,Iowa State (1482.6),Indiana (1641.3),Nebraska (1693.4),Texas A&M (1713.7),Georgia (1737.3),Illinois (1763.3),Ole Miss (1755.7),Cincinnati (1741.5),Cincinnati (1779.5),Louisville (1758.9),Tennessee (1761.5)
+21,Arizona (1475.7),Arizona (1622.8),Mississippi State (1683.5),Florida State (1708.4),Virginia (1737.3),LSU (1758.1),Washington (1749.4),Texas (1738.6),Texas (1767.9),Washington (1755.3),South Florida (1753.0)
+22,Oregon (1471.5),Iowa State (1620.6),BYU (1681.3),Alabama (1706.1),Iowa State (1732.1),Auburn (1754.3),Memphis (1737.9),Iowa (1735.2),Michigan (1762.6),Tennessee (1754.8),Missouri (1737.7)
+23,Tulane (1468.1),Purdue (1620.1),Texas A&M (1679.5),Michigan (1706.0),Arizona State (1708.0),Duke (1739.4),Duke (1734.7),South Florida (1731.0),Washington (1759.1),Michigan (1734.5),Michigan (1734.9)
+24,Illinois (1465.7),BYU (1617.9),Arizona (1662.5),Ohio State (1705.6),Michigan (1701.4),Memphis (1737.5),Texas (1732.1),Tennessee (1726.4),Pittsburgh (1744.4),Cincinnati (1728.9),Cincinnati (1727.7)
+25,Kansas (1460.6),LSU (1612.4),Michigan (1659.0),Utah (1705.6),Maryland (1696.2),Michigan (1734.8),Georgia Tech (1719.5),Louisville (1718.7),South Florida (1733.8),SMU (1724.3),Georgia Tech (1715.8)
