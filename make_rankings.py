@@ -4,6 +4,7 @@ import math
 import glob
 import os
 from conference_mappings import conf_levels, conf_mapping
+from sklearn.metrics import mean_squared_error
 import gzip
 import pickle
 from classes import elo_score
@@ -116,7 +117,9 @@ def make_rankings(df):
     for conf in set(conf_scores.Team):
         conf_subset = df[df.conf == conf]
         conf_teams = set(conf_subset.Team)
-        conf_mu = conf_scores[conf_scores.Team == conf].mu.iloc[0]
+        ## Using this raw may double weight out of conference games. 
+        # Try a dampener? first pass may not have helped much
+        conf_mu = conf_scores[conf_scores.Team == conf].mu.iloc[0]# + 1500) / 2
         conf_sigma = conf_scores[conf_scores.Team == conf].sigma.iloc[0]
         for teamname in conf_teams:
             teambase[teamname] = elo_score(teamname, conf_mu, (2*conf_sigma))
@@ -176,6 +179,11 @@ def make_rankings(df):
     club_histories = pd.concat([x.return_history() for x in teambase.values()])
     #club_histories[club_histories.Date == 12].sort_values('mu', ascending=False).head(10)
 
+    non_null_histories = club_histories[club_histories.Point_Diff.isna() == False]
+    non_null_histories = non_null_histories[non_null_histories.home == 1]
+    rmse = math.sqrt(mean_squared_error(non_null_histories.Prediction, non_null_histories.Point_Diff))
+    #print(f"RMSE: {np.round(rmse, 3)}")
+
     #club_histories[club_histories.Opponent.isnull()].sort_values('mu', ascending=False).head(10)
     max_date = club_histories.Date.iloc[-1]
     last_week = club_histories[club_histories.Date == max_date].copy()
@@ -184,7 +192,7 @@ def make_rankings(df):
     last_week = last_week[['Team','rating','mu','sigma']]
     last_week = last_week.sort_values('rating', ascending=False).reset_index(drop=True)
 
-    return last_week
+    return last_week, rmse
 
 
 def historical_rankings(file = 'season_2025.csv'):
@@ -196,7 +204,7 @@ def historical_rankings(file = 'season_2025.csv'):
     for index, cutweek in enumerate(all_weeks):
         print(f"Week {index}")
         hist_df = df[df.grouping_date <= cutweek].copy()
-        week_rankings = make_rankings(hist_df)
+        week_rankings, rmse = make_rankings(hist_df)
         #week_top25 = week_rankings.head(25).copy()
         week_rankings['Week'] = index
         week_rankings['Rank'] = [1 +x for x in list(week_rankings.index)]
@@ -207,6 +215,7 @@ def historical_rankings(file = 'season_2025.csv'):
 
     ranks['scaled_rating'] = ranks.groupby("Week").rating.transform(lambda x: (x - x.min() + 1) / (x.max() - x.min() + 1)).round(4)
 
+    print(f"RMSE: {np.round(rmse, 3)}")
     return ranks
 
 
