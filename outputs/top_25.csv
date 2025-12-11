@@ -1,26 +1,26 @@
-Rank,1,2,3,4,5,6,7,8,9,10,11
-1,Auburn,Utah,Vanderbilt,Vanderbilt,Vanderbilt,Texas Tech,Texas Tech,Ohio State,Ohio State,Indiana,Texas Tech
-2,Utah,Oregon,Oklahoma,Oklahoma,Oregon,Ohio State,Ohio State,Texas Tech,Indiana,Texas Tech,Ohio State
-3,Tennessee,Auburn,Utah,Ole Miss,Indiana,Oregon,Indiana,Indiana,Texas Tech,Ohio State,Indiana
-4,Ole Miss,Illinois,Oregon,Texas Tech,Texas Tech,Indiana,Notre Dame,Alabama,Utah,Utah,Texas A&M
-5,Georgia,Vanderbilt,Ole Miss,Oregon,Oklahoma,Oklahoma,Utah,Notre Dame,Texas A&M,Texas A&M,Utah
-6,Oklahoma,Ole Miss,Georgia,Indiana,Ole Miss,Alabama,Alabama,Oregon,Alabama,Notre Dame,Notre Dame
-7,LSU,Missouri,Missouri,Missouri,Ohio State,Vanderbilt,Texas A&M,Utah,Notre Dame,Alabama,Georgia
-8,Texas A&M,Oklahoma,USC,USC,Notre Dame,Notre Dame,Georgia,Georgia,Oregon,Oregon,Alabama
-9,South Carolina,USC,Auburn,Georgia,Missouri,Texas A&M,USC,Texas A&M,BYU,BYU,Oregon
-10,Missouri,Tennessee,Illinois,BYU,Tennessee,Ole Miss,Vanderbilt,Oklahoma,Georgia,Georgia,BYU
-11,Vanderbilt,Georgia,Houston,Tennessee,BYU,Miami,BYU,Vanderbilt,Vanderbilt,Vanderbilt,USC
-12,Florida State,Penn State,LSU,Auburn,Utah,Missouri,Miami,BYU,Miami,Oklahoma,Vanderbilt
-13,Maryland,Ohio State,Arkansas,Houston,USC,Tennessee,Oregon,Missouri,Ole Miss,Ole Miss,Ole Miss
-14,Florida,TCU,Tennessee,TCU,Alabama,Utah,LSU,USC,USC,USC,Oklahoma
-15,Mississippi State,Arkansas,TCU,LSU,Miami,Georgia,Iowa,Miami,Iowa,Iowa,Miami
-16,Arkansas,Nebraska,Ohio State,Miami,Texas A&M,BYU,Tennessee,LSU,Oklahoma,Miami,Iowa
-17,Ohio State,Texas A&M,Penn State,Kansas,Auburn,USC,Missouri,Georgia Tech,Missouri,Missouri,Texas
-18,USC,Houston,Indiana,Mississippi State,TCU,TCU,Virginia,Ole Miss,Tennessee,Texas,Pittsburgh
-19,Penn State,Washington,Alabama,Washington,LSU,Virginia,Oklahoma,Michigan,Georgia Tech,Pittsburgh,SMU
-20,Iowa State,Indiana,Nebraska,Texas A&M,Georgia,Illinois,Ole Miss,Cincinnati,Cincinnati,Louisville,Tennessee
-21,Arizona,Arizona,Mississippi State,Florida State,Virginia,LSU,Washington,Texas,Texas,Washington,South Florida
-22,Oregon,Iowa State,BYU,Alabama,Iowa State,Auburn,Memphis,Iowa,Michigan,Tennessee,Missouri
-23,Tulane,Purdue,Texas A&M,Michigan,Arizona State,Duke,Duke,South Florida,Washington,Michigan,Michigan
-24,Illinois,BYU,Arizona,Ohio State,Michigan,Memphis,Texas,Tennessee,Pittsburgh,Cincinnati,Cincinnati
-25,Kansas,LSU,Michigan,Utah,Maryland,Michigan,Georgia Tech,Louisville,South Florida,SMU,Georgia Tech
+Rank,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15
+1,Auburn,Utah,Vanderbilt,Vanderbilt,Vanderbilt,Texas Tech,Texas Tech,Ohio State,Ohio State,Indiana,Texas Tech,Texas Tech,Texas Tech,Texas Tech,Texas Tech
+2,Utah,Oregon,Oklahoma,Oklahoma,Oregon,Ohio State,Ohio State,Texas Tech,Indiana,Texas Tech,Ohio State,Ohio State,Ohio State,Ohio State,Indiana
+3,Tennessee,Auburn,Utah,Ole Miss,Indiana,Oregon,Indiana,Indiana,Texas Tech,Ohio State,Indiana,Indiana,Indiana,Indiana,Ohio State
+4,Ole Miss,Illinois,Oregon,Texas Tech,Texas Tech,Indiana,Notre Dame,Alabama,Utah,Utah,Texas A&M,Utah,Notre Dame,Notre Dame,Notre Dame
+5,Georgia,Vanderbilt,Ole Miss,Oregon,Oklahoma,Oklahoma,Utah,Notre Dame,Texas A&M,Texas A&M,Utah,Notre Dame,Utah,Oregon,Oregon
+6,Oklahoma,Ole Miss,Georgia,Indiana,Ole Miss,Alabama,Alabama,Oregon,Alabama,Notre Dame,Notre Dame,Georgia,Georgia,Utah,Georgia
+7,LSU,Missouri,Missouri,Missouri,Ohio State,Vanderbilt,Texas A&M,Utah,Notre Dame,Alabama,Georgia,Texas A&M,Oregon,Miami,Utah
+8,Texas A&M,Oklahoma,USC,USC,Notre Dame,Notre Dame,Georgia,Georgia,Oregon,Oregon,Alabama,Oregon,Texas A&M,BYU,Miami
+9,South Carolina,USC,Auburn,Georgia,Missouri,Texas A&M,USC,Texas A&M,BYU,BYU,Oregon,BYU,BYU,Georgia,Vanderbilt
+10,Missouri,Tennessee,Illinois,BYU,Tennessee,Ole Miss,Vanderbilt,Oklahoma,Georgia,Georgia,BYU,Alabama,Alabama,Vanderbilt,BYU
+11,Vanderbilt,Georgia,Houston,Tennessee,BYU,Miami,BYU,Vanderbilt,Vanderbilt,Vanderbilt,USC,Oklahoma,Oklahoma,Alabama,Texas A&M
+12,Florida State,Penn State,LSU,Auburn,Utah,Missouri,Miami,BYU,Miami,Oklahoma,Vanderbilt,Miami,Vanderbilt,Texas A&M,Ole Miss
+13,Maryland,Ohio State,Arkansas,Houston,USC,Tennessee,Oregon,Missouri,Ole Miss,Ole Miss,Ole Miss,USC,Miami,Ole Miss,Alabama
+14,Florida,TCU,Tennessee,TCU,Alabama,Utah,LSU,USC,USC,USC,Oklahoma,Vanderbilt,Ole Miss,Oklahoma,Oklahoma
+15,Mississippi State,Arkansas,TCU,LSU,Miami,Georgia,Iowa,Miami,Iowa,Iowa,Miami,Ole Miss,USC,Arizona,Arizona
+16,Arkansas,Nebraska,Ohio State,Miami,Texas A&M,BYU,Tennessee,LSU,Oklahoma,Miami,Iowa,Iowa,Tennessee,USC,USC
+17,Ohio State,Texas A&M,Penn State,Kansas,Auburn,USC,Missouri,Georgia Tech,Missouri,Missouri,Texas,Missouri,SMU,Iowa,Iowa
+18,USC,Houston,Indiana,Mississippi State,TCU,TCU,Virginia,Ole Miss,Tennessee,Texas,Pittsburgh,Tennessee,Washington,Texas,Texas
+19,Penn State,Washington,Alabama,Washington,LSU,Virginia,Oklahoma,Michigan,Georgia Tech,Pittsburgh,SMU,SMU,Texas,SMU,SMU
+20,Iowa State,Indiana,Nebraska,Texas A&M,Georgia,Illinois,Ole Miss,Cincinnati,Cincinnati,Louisville,Tennessee,Arizona,Arizona,Missouri,Missouri
+21,Arizona,Arizona,Mississippi State,Florida State,Virginia,LSU,Washington,Texas,Texas,Washington,South Florida,Texas,Michigan,Washington,Washington
+22,Oregon,Iowa State,BYU,Alabama,Iowa State,Auburn,Memphis,Iowa,Michigan,Tennessee,Missouri,Washington,Pittsburgh,South Florida,South Florida
+23,Tulane,Purdue,Texas A&M,Michigan,Arizona State,Duke,Duke,South Florida,Washington,Michigan,Michigan,Illinois,Missouri,Virginia,Michigan
+24,Illinois,BYU,Arizona,Ohio State,Michigan,Memphis,Texas,Tennessee,Pittsburgh,Cincinnati,Cincinnati,Michigan,Iowa,Michigan,Tennessee
+25,Kansas,LSU,Michigan,Utah,Maryland,Michigan,Georgia Tech,Louisville,South Florida,SMU,Georgia Tech,South Florida,South Florida,Tennessee,James Madison
